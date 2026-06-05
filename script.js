@@ -36,3 +36,20 @@ document.getElementById("loginBtn").onclick = async () => {
     document.getElementById("msg").innerText = e.message;
   }
 };
+document.getElementById("postBtn").onclick = async () => {
+  const title = document.getElementById("title").value;
+  const content = document.getElementById("content").value;
+
+  try {
+    await addDoc(collection(db, "posts"), {
+      title: title,
+      content: content,
+      createdAt: new Date()
+    });
+
+    document.getElementById("postMsg").innerText =
+      "Post Published Successfully!";
+  } catch (e) {
+    document.getElementById("postMsg").innerText = e.message;
+  }
+};
