@@ -49,6 +49,7 @@ document.getElementById("postBtn").onclick = async () => {
 
     document.getElementById("postMsg").innerText =
       "Post Published Successfully!";
+    loadPosts();
   } catch (e) {
     document.getElementById("postMsg").innerText = e.message;
   }
