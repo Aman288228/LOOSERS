@@ -53,3 +53,22 @@ document.getElementById("postBtn").onclick = async () => {
     document.getElementById("postMsg").innerText = e.message;
   }
 };
+async function loadPosts() {
+  const postsDiv = document.getElementById("posts");
+  postsDiv.innerHTML = "";
+
+  const querySnapshot = await getDocs(collection(db, "posts"));
+
+  querySnapshot.forEach((doc) => {
+    const post = doc.data();
+
+    postsDiv.innerHTML += `
+      <div style="border:1px solid #ccc;padding:10px;margin:10px;">
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+      </div>
+    `;
+  });
+}
+
+loadPosts();
