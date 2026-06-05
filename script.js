@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
+const db = getFirestore(app);
 document.getElementById("signupBtn").onclick = async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
