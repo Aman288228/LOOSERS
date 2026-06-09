@@ -67,7 +67,7 @@ async function loadPosts() {
       <div style="border:1px solid #ccc;padding:10px;margin:10px;">
         <h3>${post.title}</h3>
         <p>${post.content}</p>
-        <br><br>
+      
         <button>❤️ Like</button>
         <input type="text" placeholder="Write a comment">
 <button>💬 Comment</button>
