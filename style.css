@@ -5,7 +5,9 @@ body{
     padding: 20px;
     background: #f4f6f9;
 }
-
+body{
+  background:red;
+}
 h1{
     text-align:center;
 }
