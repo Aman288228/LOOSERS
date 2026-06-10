@@ -71,8 +71,10 @@ async function loadPosts() {
         <p>${post.content}</p>
       
         <button onclick="likePost('${postId}')">❤️ ${post.likes || 0}</button>
-        <input type="text" placeholder="Write a comment">
-<button>💬 Comment</button>
+        <input type="text" id="comment-${postId}" placeholder="Write a comment">
+<button onclick="addComment('${postId}')">💬 Comment</button>
+
+<div id="comments-${postId}"></div>
       </div>
     `;
   });
@@ -92,3 +94,20 @@ document.getElementById("logoutBtn").onclick = async () => {
   await signOut(auth);
   document.getElementById("msg").innerText = "Logged Out!";
 };
+window.addComment = async function(postId) {
+
+  const text =
+    document.getElementById(`comment-${postId}`).value;
+
+  if (!text) {
+    alert("Comment likho");
+    return;
+  }
+
+  await addDoc(collection(db, "comments"), {
+    postId: postId,
+    text: text
+  });
+
+  alert("Comment Added!");
+}
