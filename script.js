@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, increment, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD0apa8kCYrCn7C2XvJQ4VlY4kTNQKqnlM",
   authDomain: "sagarsocial-93251.firebaseapp.com",
@@ -64,6 +64,18 @@ async function loadPosts() {
   querySnapshot.forEach((doc) => {
     const postId = doc.id;
     const post = doc.data();
+    const commentsQuery = query(
+  collection(db, "comments"),
+  where("postId", "==", postId)
+);
+
+const commentsSnapshot = await getDocs(commentsQuery);
+
+let commentsHTML = "";
+
+commentsSnapshot.forEach((commentDoc) => {
+  commentsHTML += `<p>💬 ${commentDoc.data().text}</p>`;
+});
 
     postsDiv.innerHTML += `
       <div style="border:1px solid #ccc;padding:10px;margin:10px;">
