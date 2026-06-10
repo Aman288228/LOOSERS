@@ -86,7 +86,7 @@ commentsSnapshot.forEach((commentDoc) => {
         <input type="text" id="comment-${postId}" placeholder="Write a comment">
 <button onclick="addComment('${postId}')">💬 Comment</button>
 
-<div id="comments-${postId}"></div>
+<div>${commentsHTML}</div>
       </div>
     `;
   });
