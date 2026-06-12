@@ -67,7 +67,8 @@ for (const doc of querySnapshot.docs) {
     const commentsQuery = query(
   collection(db, "comments"),
   where("postId", "==", postId)
-);
+  }
+}
 
 const commentsSnapshot = await getDocs(commentsQuery);
 
