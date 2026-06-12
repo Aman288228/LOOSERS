@@ -61,7 +61,7 @@ async function loadPosts() {
 
   const querySnapshot = await getDocs(collection(db, "posts"));
 
-  querySnapshot.forEach((doc) => {
+for (const doc of querySnapshot.docs) {
     const postId = doc.id;
     const post = doc.data();
     const commentsQuery = query(
@@ -75,7 +75,7 @@ let commentsHTML = "";
 
 commentsSnapshot.forEach((commentDoc) => {
   commentsHTML += `<p>💬 ${commentDoc.data().text}</p>`;
-});
+}
 
     postsDiv.innerHTML += `
       <div style="border:1px solid #ccc;padding:10px;margin:10px;">
