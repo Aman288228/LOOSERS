@@ -47,3 +47,25 @@ button:hover{
     position:sticky;
     top:10px;
 }
+.container{
+  display:flex;
+  min-height:100vh;
+}
+
+.sidebar{
+  width:250px;
+  background:#1f1147;
+  color:white;
+  padding:20px;
+}
+
+.feed{
+  flex:1;
+  padding:20px;
+}
+
+.rightbar{
+  width:300px;
+  padding:20px;
+  background:#f5f5f5;
+}
