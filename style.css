@@ -75,16 +75,16 @@ button:hover{
 }
 
 .menu-item{
-  background:#6c3df4;
   color:white;
-  padding:18px 20px;
-  margin-bottom:15px;
-  border-radius:18px;
-  font-size:22px;
-  font-weight:bold;
+  padding:12px 15px;
+  margin-bottom:10px;
+  font-size:18px;
   cursor:pointer;
-  width:100%;
-  box-sizing:border-box;
+  border-radius:15px;
+}
+.menu-item.active{
+  background:#6c3df4;
+  font-weight:bold;
 }
 .menu-item:hover{
   transform:translateX(5px);
