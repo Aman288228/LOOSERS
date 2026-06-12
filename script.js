@@ -102,7 +102,7 @@ window.addComment = async function(postId) {
   if (!text) {
     alert("Comment likho");
     return;
-  }
+  };
 
   await addDoc(collection(db, "comments"), {
     postId: postId,
@@ -111,3 +111,12 @@ window.addComment = async function(postId) {
 
   alert("Comment Added!");
 }
+window.likePost = async function(postId) {
+  const postRef = doc(db, "posts", postId);
+
+  await updateDoc(postRef, {
+    likes: increment(1)
+  });
+
+  loadPosts();
+};
