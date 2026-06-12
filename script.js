@@ -90,7 +90,7 @@ commentsSnapshot.forEach((commentDoc) => {
 <div>${commentsHTML}</div>
       </div>
     `;
-  });
+  }
 }
 
 loadPosts();
