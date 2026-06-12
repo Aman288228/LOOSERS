@@ -75,7 +75,7 @@ let commentsHTML = "";
 
 commentsSnapshot.forEach((commentDoc) => {
   commentsHTML += `<p>💬 ${commentDoc.data().text}</p>`;
-}
+});
 
     postsDiv.innerHTML += `
       <div style="border:1px solid #ccc;padding:10px;margin:10px;">
