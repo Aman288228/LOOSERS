@@ -64,11 +64,10 @@ async function loadPosts() {
 for (const doc of querySnapshot.docs) {
     const postId = doc.id;
     const post = doc.data();
-    const commentsQuery = query(
+   const commentsQuery = query(
   collection(db, "comments"),
   where("postId", "==", postId)
-  }
-}
+);
 
 const commentsSnapshot = await getDocs(commentsQuery);
 
