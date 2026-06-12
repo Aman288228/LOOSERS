@@ -1,7 +1,7 @@
 body{
     font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: auto;
+   max-width: 100%;
+   margin: 0;
     padding: 20px;
     background: #f4f6f9;
 }
@@ -49,6 +49,7 @@ button:hover{
 }
 .container{
   display:flex;
+  width:100%;
   min-height:100vh;
 }
 
@@ -62,8 +63,8 @@ button:hover{
 .feed{
   flex:1;
   padding:20px;
+  background:white;
 }
-
 .rightbar{
   width:300px;
   padding:20px;
