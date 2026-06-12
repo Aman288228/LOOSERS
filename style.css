@@ -54,19 +54,19 @@ button:hover{
 }
 
 .sidebar{
-  width:250px;
+  width:320px;
   background:#1f1147;
   color:white;
   padding:20px;
 }
 
 .feed{
-  flex:1;
+  width:800px;
   padding:20px;
   background:white;
 }
 .rightbar{
-  width:300px;
+  width:350px;
   padding:20px;
   background:#f5f5f5;
 }
@@ -77,13 +77,15 @@ button:hover{
 .menu-item{
   background:#6c3df4;
   color:white;
-  padding:15px;
-  margin-bottom:12px;
-  border-radius:15px;
-  font-size:18px;
+  padding:18px 20px;
+  margin-bottom:15px;
+  border-radius:18px;
+  font-size:22px;
+  font-weight:bold;
   cursor:pointer;
+  width:100%;
+  box-sizing:border-box;
 }
-
 .menu-item:hover{
   transform:translateX(5px);
 }
