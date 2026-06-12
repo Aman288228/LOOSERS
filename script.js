@@ -64,18 +64,7 @@ async function loadPosts() {
 for (const doc of querySnapshot.docs) {
     const postId = doc.id;
     const post = doc.data();
-   const commentsQuery = query(
-  collection(db, "comments"),
-  where("postId", "==", postId)
-);
-
-const commentsSnapshot = await getDocs(commentsQuery);
-
-let commentsHTML = "";
-
-commentsSnapshot.forEach((commentDoc) => {
-  commentsHTML += `<p>💬 ${commentDoc.data().text}</p>`;
-});
+  
 
     postsDiv.innerHTML += `
       <div style="border:1px solid #ccc;padding:10px;margin:10px;">
@@ -86,7 +75,7 @@ commentsSnapshot.forEach((commentDoc) => {
         <input type="text" id="comment-${postId}" placeholder="Write a comment">
 <button onclick="addComment('${postId}')">💬 Comment</button>
 
-<div>${commentsHTML}</div>
+<div></div>
       </div>
    `;
   }
