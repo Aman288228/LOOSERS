@@ -137,3 +137,14 @@ button:hover{
   font-weight:bold;
   box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
+.widget{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.widget h3{
+  margin-top:0;
+}
