@@ -77,7 +77,7 @@ for (const doc of querySnapshot.docs) {
       <div></div>
     </div>
   `;
-}
+ }
 }
 
 loadPosts();
