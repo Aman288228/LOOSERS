@@ -40,3 +40,20 @@ window.likePost = async function(postId) {
 
   loadPosts();
 }
+window.addComment = async function(postId) {
+
+  const text =
+    document.getElementById(`comment-${postId}`).value;
+
+  if (!text) {
+    alert("Comment likho");
+    return;
+  };
+
+  await addDoc(collection(db, "comments"), {
+    postId: postId,
+    text: text
+  });
+
+  alert("Comment Added!");
+}
