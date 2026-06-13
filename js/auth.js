@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", () => {
 import {
   auth,
   createUserWithEmailAndPassword,
@@ -112,3 +113,4 @@ document.getElementById("authTitle").onclick = () => {
   document.getElementById("loginBtn").style.display = "block";
   document.getElementById("signupBtn").style.display = "block";
 };
+});
