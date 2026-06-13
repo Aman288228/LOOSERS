@@ -14,6 +14,7 @@ document.getElementById("signupBtn").onclick = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
     document.getElementById("msg").innerText = "Signup Successful!";
+    document.getElementById("authModal").style.display = "none";
   } catch (e) {
     document.getElementById("msg").innerText = e.message;
   }
@@ -26,12 +27,14 @@ document.getElementById("loginBtn").onclick = async () => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     document.getElementById("msg").innerText = "Login Successful!";
+    document.getElementById("authModal").style.display = "none";
   } catch (e) {
     document.getElementById("msg").innerText = e.message;
   }
 };
 
 onAuthStateChanged(auth, (user) => {
+   const modal = document.getElementById("authModal");
   if (user) {
     currentUser = user;
     console.log("Logged In:", user.email);
