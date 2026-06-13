@@ -45,6 +45,12 @@ onAuthStateChanged(auth, (user) => {
     console.log("No User Logged In");
   }
 });
+document.getElementById("switchText").onclick = () => {
+  document.getElementById("authModal").style.display = "none";
+  document.getElementById("signupWizard").style.display = "flex";
+
+  resetSignupWizard();
+};
 document.getElementById("next1").onclick = () => {
   document.getElementById("step1").style.display = "none";
   document.getElementById("step2").style.display = "block";
@@ -59,3 +65,27 @@ document.getElementById("switchText").onclick = () => {
   document.getElementById("authModal").style.display = "none";
   document.getElementById("signupWizard").style.display = "flex";
 };
+document.getElementById("back1Btn").onclick = () => {
+  document.getElementById("step1").style.display = "block";
+  document.getElementById("step2").style.display = "none";
+  currentStep = 1;
+};
+
+document.getElementById("back2Btn").onclick = () => {
+  document.getElementById("step2").style.display = "block";
+  document.getElementById("step3").style.display = "none";
+  currentStep = 2;
+};
+
+function resetSignupWizard() {
+  currentStep = 1;
+
+  document.getElementById("step1").style.display = "block";
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step3").style.display = "none";
+
+  document.getElementById("name").value = "";
+  document.getElementById("username").value = "";
+  document.getElementById("newEmail").value = "";
+  document.getElementById("newPassword").value = "";
+}
