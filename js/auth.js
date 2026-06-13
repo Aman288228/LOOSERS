@@ -45,3 +45,7 @@ onAuthStateChanged(auth, (user) => {
     console.log("No User Logged In");
   }
 });
+document.getElementById("switchText").onclick = () => {
+  document.getElementById("authModal").style.display = "none";
+  document.getElementById("signupWizard").style.display = "flex";
+};
