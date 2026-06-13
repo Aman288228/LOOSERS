@@ -93,11 +93,12 @@ document.getElementById("createAccount").onclick = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
 
-    document.getElementById("signupWizard").style.display = "none";
-    document.getElementById("msg").innerText = "Account Created Successfully!";
+   document.getElementById("signupWizard").style.display = "none";
 
-    document.getElementById("authModal").style.display = "flex";
-
+setTimeout(() => {
+  document.getElementById("authModal").style.display = "flex";
+  document.getElementById("msg").innerText = "Account created! Please login now.";
+}, 300);
   } catch (e) {
     alert(e.message);
   }
