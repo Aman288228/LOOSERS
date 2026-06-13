@@ -25,17 +25,7 @@ document.getElementById("signupBtn").onclick = async () => {
   }
 };
 
-document.getElementById("loginBtn").onclick = async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    document.getElementById("msg").innerText = "Login Successful!";
-  } catch (e) {
-    document.getElementById("msg").innerText = e.message;
-  }
-};
 document.getElementById("postBtn").onclick = async () => {
   const title = document.getElementById("title").value;
   const content = document.getElementById("content").value;
@@ -90,10 +80,7 @@ window.likePost = async function(postId) {
 
   loadPosts();
 }
-document.getElementById("logoutBtn").onclick = async () => {
-  await signOut(auth);
-  document.getElementById("msg").innerText = "Logged Out!";
-};
+
 window.addComment = async function(postId) {
 
   const text =
