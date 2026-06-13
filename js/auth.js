@@ -32,7 +32,9 @@ document.getElementById("loginBtn").onclick = async () => {
     document.getElementById("msg").innerText = e.message;
   }
 };
-
+document.getElementById("closeModal").onclick = () => {
+  document.getElementById("authModal").style.display = "none";
+};
 onAuthStateChanged(auth, (user) => {
    const modal = document.getElementById("authModal");
   if (user) {
