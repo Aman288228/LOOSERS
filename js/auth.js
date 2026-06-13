@@ -6,7 +6,7 @@ import {
 } from "./firebase.js";
 
 let currentUser = null;
-
+let currentStep = 1;
 document.getElementById("signupBtn").onclick = async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -45,6 +45,16 @@ onAuthStateChanged(auth, (user) => {
     console.log("No User Logged In");
   }
 });
+document.getElementById("next1").onclick = () => {
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+  currentStep = 2;
+};
+document.getElementById("next2").onclick = () => {
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step3").style.display = "block";
+  currentStep = 3;
+};
 document.getElementById("switchText").onclick = () => {
   document.getElementById("authModal").style.display = "none";
   document.getElementById("signupWizard").style.display = "flex";
