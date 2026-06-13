@@ -28,7 +28,7 @@ document.getElementById("signupBtn").onclick = async () => {
 };
 
 
-document.getElementById("postBtn").onclick = async () => {
+/*document.getElementById("postBtn").onclick = async () => {
   const title = document.getElementById("title").value;
   const content = document.getElementById("content").value;
 
@@ -46,7 +46,7 @@ document.getElementById("postBtn").onclick = async () => {
   } catch (e) {
     document.getElementById("postMsg").innerText = e.message;
   }
-};
+}; */
 async function loadPosts() {
   const postsDiv = document.getElementById("posts");
   postsDiv.innerHTML = "";
