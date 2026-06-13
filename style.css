@@ -58,10 +58,10 @@ button:hover{
   background:#1f1147;
   color:white;
   padding:20px;
+  position:sticky;
+  top:0;
+  height:100vh;
 }
-position:sticky;
-top:0;
-height:100vh;
 .feed{
   flex:1;
   padding:20px;
