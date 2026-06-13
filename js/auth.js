@@ -1,4 +1,3 @@
-window.addEventListener("DOMContentLoaded", () => {
 import {
   auth,
   createUserWithEmailAndPassword,
@@ -53,41 +52,7 @@ document.getElementById("switchText").onclick = () => {
 
   document.getElementById("signupForm").style.display = "block";
 };
-document.getElementById("next1").onclick = () => {
-  document.getElementById("step1").style.display = "none";
-  document.getElementById("step2").style.display = "block";
-  currentStep = 2;
-};
-document.getElementById("next2").onclick = () => {
-  document.getElementById("step2").style.display = "none";
-  document.getElementById("step3").style.display = "block";
-  currentStep = 3;
-};
 
-document.getElementById("back1Btn").onclick = () => {
-  document.getElementById("step1").style.display = "block";
-  document.getElementById("step2").style.display = "none";
-  currentStep = 1;
-};
-
-document.getElementById("back2Btn").onclick = () => {
-  document.getElementById("step2").style.display = "block";
-  document.getElementById("step3").style.display = "none";
-  currentStep = 2;
-};
-
-function resetSignupWizard() {
-  currentStep = 1;
-
-  document.getElementById("step1").style.display = "block";
-  document.getElementById("step2").style.display = "none";
-  document.getElementById("step3").style.display = "none";
-
-  document.getElementById("name").value = "";
-  document.getElementById("username").value = "";
-  document.getElementById("newEmail").value = "";
-  document.getElementById("newPassword").value = "";
-}
 document.getElementById("createAccount").onclick = async () => {
   const name = document.getElementById("name").value;
   const username = document.getElementById("username").value;
