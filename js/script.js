@@ -1,4 +1,19 @@
-
+import {
+  auth,
+  db,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+  increment,
+  query,
+  where
+} from "./firebase.js";
 let currentUser = null;
 document.getElementById("signupBtn").onclick = async () => {
   const email = document.getElementById("email").value;
