@@ -61,10 +61,7 @@ document.getElementById("next2").onclick = () => {
   document.getElementById("step3").style.display = "block";
   currentStep = 3;
 };
-document.getElementById("switchText").onclick = () => {
-  document.getElementById("authModal").style.display = "none";
-  document.getElementById("signupWizard").style.display = "flex";
-};
+
 document.getElementById("back1Btn").onclick = () => {
   document.getElementById("step1").style.display = "block";
   document.getElementById("step2").style.display = "none";
@@ -89,3 +86,19 @@ function resetSignupWizard() {
   document.getElementById("newEmail").value = "";
   document.getElementById("newPassword").value = "";
 }
+document.getElementById("createAccount").onclick = async () => {
+  const email = document.getElementById("newEmail").value;
+  const password = document.getElementById("newPassword").value;
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+
+    document.getElementById("signupWizard").style.display = "none";
+    document.getElementById("msg").innerText = "Account Created Successfully!";
+
+    document.getElementById("authModal").style.display = "flex";
+
+  } catch (e) {
+    alert(e.message);
+  }
+};
