@@ -195,14 +195,18 @@ button:hover{
 }
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 25px;
+  top: -12px;      /* 👈 bahar nikalne ke liye */
+  right: -12px;    /* 👈 bahar nikalne ke liye */
+  font-size: 24px;
   cursor: pointer;
   font-weight: bold;
-  color: #333;
-}
-
-.close-btn:hover {
-  color: red;
+  color: #333;    /* 👈 black color */
+  background: white;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
