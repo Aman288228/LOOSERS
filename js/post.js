@@ -57,3 +57,4 @@ window.addComment = async function(postId) {
 
   alert("Comment Added!");
 }
+loadPosts();
