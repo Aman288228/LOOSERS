@@ -15,17 +15,7 @@ import {
   where
 } from "./firebase.js";
 let currentUser = null;
-document.getElementById("signupBtn").onclick = async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
 
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    document.getElementById("msg").innerText = "Signup Successful!";
-  } catch (e) {
-    document.getElementById("msg").innerText = e.message;
-  }
-};
 
 
 /*document.getElementById("postBtn").onclick = async () => {
@@ -106,20 +96,4 @@ const authModal = document.getElementById("authModal");
 writeBlogBtn.onclick = () => {
   authModal.style.display = "flex";
 };
-onAuthStateChanged(auth, (user) => {
-
-  if (user) {
-
-    currentUser = user;
-
-    console.log("Logged In:", user.email);
-
-  } else {
-
-    currentUser = null;
-
-    console.log("No User Logged In");
-
-  }
-
-});
+import "./auth.js";
