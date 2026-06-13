@@ -36,23 +36,37 @@ document.getElementById("closeModal").onclick = () => {
   document.getElementById("authModal").style.display = "none";
 };
 onAuthStateChanged(auth, (user) => {
-   const modal = document.getElementById("authModal");
+  const modal = document.getElementById("authModal");
+
   if (user) {
     currentUser = user;
     console.log("Logged In:", user.email);
+
+    modal.style.display = "none";
   } else {
     currentUser = null;
     console.log("No User Logged In");
+
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
   }
 });
+const signupForm = document.getElementById("signupForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+const signupBtn = document.getElementById("signupBtn");
+
 document.getElementById("switchText").onclick = () => {
 
-  document.getElementById("loginBtn").style.display = "none";
-  document.getElementById("signupBtn").style.display = "none";
+  if (emailInput) emailInput.style.display = "none";
+  if (passwordInput) passwordInput.style.display = "none";
 
-  document.getElementById("signupForm").style.display = "block";
+  if (loginBtn) loginBtn.style.display = "none";
+  if (signupBtn) signupBtn.style.display = "none";
+
+  if (signupForm) signupForm.style.display = "block";
 };
-
 document.getElementById("createAccount").onclick = async () => {
   const name = document.getElementById("name").value;
   const username = document.getElementById("username").value;
@@ -62,12 +76,15 @@ document.getElementById("createAccount").onclick = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
 
-    document.getElementById("signupForm").style.display = "none";
-    document.getElementById("authModal").style.display = "flex";
+   
+  document.getElementById("signupForm").style.display = "none";
+document.getElementById("authModal").style.display = "flex";
 
-    document.getElementById("msg").innerText =
-      "Account Created Successfully! Now login.";
+document.getElementById("email").value = "";
+document.getElementById("password").value = "";
 
+document.getElementById("msg").innerText =
+  "Account Created Successfully! Now login.";
   } catch (e) {
     alert(e.message);
   }
@@ -78,4 +95,4 @@ document.getElementById("authTitle").onclick = () => {
   document.getElementById("loginBtn").style.display = "block";
   document.getElementById("signupBtn").style.display = "block";
 };
-});
+
