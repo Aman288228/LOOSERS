@@ -46,10 +46,11 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 document.getElementById("switchText").onclick = () => {
-  document.getElementById("authModal").style.display = "none";
-  document.getElementById("signupWizard").style.display = "flex";
 
-  resetSignupWizard();
+  document.getElementById("loginBtn").style.display = "none";
+  document.getElementById("signupBtn").style.display = "none";
+
+  document.getElementById("signupForm").style.display = "block";
 };
 document.getElementById("next1").onclick = () => {
   document.getElementById("step1").style.display = "none";
@@ -87,19 +88,27 @@ function resetSignupWizard() {
   document.getElementById("newPassword").value = "";
 }
 document.getElementById("createAccount").onclick = async () => {
+  const name = document.getElementById("name").value;
+  const username = document.getElementById("username").value;
   const email = document.getElementById("newEmail").value;
   const password = document.getElementById("newPassword").value;
 
   try {
     await createUserWithEmailAndPassword(auth, email, password);
 
-   document.getElementById("signupWizard").style.display = "none";
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("authModal").style.display = "flex";
 
-setTimeout(() => {
-  document.getElementById("authModal").style.display = "flex";
-  document.getElementById("msg").innerText = "Account created! Please login now.";
-}, 300);
+    document.getElementById("msg").innerText =
+      "Account Created Successfully! Now login.";
+
   } catch (e) {
     alert(e.message);
   }
+};
+document.getElementById("authTitle").onclick = () => {
+  document.getElementById("signupForm").style.display = "none";
+
+  document.getElementById("loginBtn").style.display = "block";
+  document.getElementById("signupBtn").style.display = "block";
 };
