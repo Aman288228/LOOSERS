@@ -51,21 +51,13 @@ onAuthStateChanged(auth, (user) => {
     document.getElementById("password").value = "";
   }
 });
+const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const loginBtn = document.getElementById("loginBtn");
-const signupBtn = document.getElementById("signupBtn");
+const backToLogin = document.getElementById("backToLogin");
 
 document.getElementById("switchText").onclick = () => {
-
-  if (emailInput) emailInput.style.display = "none";
-  if (passwordInput) passwordInput.style.display = "none";
-
-  if (loginBtn) loginBtn.style.display = "none";
-  if (signupBtn) signupBtn.style.display = "none";
-
-  if (signupForm) signupForm.style.display = "block";
+  loginForm.style.display = "none";
+  signupForm.style.display = "block";
 };
 document.getElementById("createAccount").onclick = async () => {
   const name = document.getElementById("name").value;
@@ -95,4 +87,7 @@ document.getElementById("authTitle").onclick = () => {
   document.getElementById("loginBtn").style.display = "block";
   document.getElementById("signupBtn").style.display = "block";
 };
-
+backToLogin.onclick = () => {
+  signupForm.style.display = "none";
+  loginForm.style.display = "block";
+};
