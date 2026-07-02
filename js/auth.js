@@ -11,28 +11,7 @@ import {
 
 let currentUser = null;
 let currentStep = 1;
-document.getElementById("signupBtn").onclick = async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
 
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    const user = auth.currentUser;
-
-await setDoc(doc(db, "users", user.uid), {
-  name: name,
-  username: username,
-  email: email,
-  createdAt: serverTimestamp()
-});
-    const user = auth.currentUser;
-
-await setDoc(doc(db, "users", user.uid), {
-  name: name,
-  username: username,
-  email: email,
-  createdAt: serverTimestamp()
-});
     document.getElementById("msg").innerText = "Signup Successful!";
     document.getElementById("authModal").style.display = "none";
   } catch (e) {
@@ -87,7 +66,14 @@ document.getElementById("createAccount").onclick = async () => {
 
   try {
     await createUserWithEmailAndPassword(auth, email, password);
+const user = auth.currentUser;
 
+await setDoc(doc(db, "users", user.uid), {
+  name,
+  username,
+  email,
+  createdAt: serverTimestamp()
+});
    
  signupForm.style.display = "none";
 loginForm.style.display = "block";
