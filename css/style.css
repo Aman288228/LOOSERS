@@ -214,3 +214,68 @@ position: relative;
 .close-btn:hover {
   background: #f0f0f0;
 }
+/* ================= BLOG EDITOR ================= */
+
+.editor-box{
+    width:700px;
+    max-width:95%;
+    padding:25px;
+}
+
+.editor-box input,
+.editor-box select,
+.editor-box textarea{
+
+    width:100%;
+    padding:12px;
+    margin-top:12px;
+
+    border:1px solid #ddd;
+    border-radius:8px;
+
+    font-size:16px;
+    outline:none;
+
+    box-sizing:border-box;
+}
+
+.editor-box textarea{
+
+    resize:vertical;
+    min-height:250px;
+
+}
+
+.editor-buttons{
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:20px;
+}
+
+.editor-buttons button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+#saveDraft{
+
+    background:#f1f1f1;
+
+}
+
+#publishBlog{
+
+    background:#1877f2;
+
+    color:white;
+}
