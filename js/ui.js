@@ -7,10 +7,10 @@ const authModal = document.getElementById("authModal");
 
 writeBlogBtn.onclick = () => {
 
-  if (auth.currentUser) {
+if (auth.currentUser) {
 
-    // User Login Hai
-    alert("Blog Editor Open Hoga (Next Step)");
+    document.getElementById("editorModal").style.display = "flex";
+
 
   } else {
 
@@ -18,5 +18,10 @@ writeBlogBtn.onclick = () => {
     authModal.style.display = "flex";
 
   }
+
+};
+document.getElementById("closeEditor").onclick = () => {
+
+    document.getElementById("editorModal").style.display = "none";
 
 };
