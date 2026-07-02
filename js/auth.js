@@ -25,6 +25,14 @@ await setDoc(doc(db, "users", user.uid), {
   email: email,
   createdAt: serverTimestamp()
 });
+    const user = auth.currentUser;
+
+await setDoc(doc(db, "users", user.uid), {
+  name: name,
+  username: username,
+  email: email,
+  createdAt: serverTimestamp()
+});
     document.getElementById("msg").innerText = "Signup Successful!";
     document.getElementById("authModal").style.display = "none";
   } catch (e) {
