@@ -141,7 +141,71 @@
 
   </div>
 
- 
+ <!-- ================= BLOG EDITOR ================= -->
+
+<div id="editorModal" class="modal" style="display:none;">
+
+  <div class="modal-content editor-box">
+
+    <span id="closeEditor" class="close-btn">×</span>
+
+    <h2>Create New Story</h2>
+
+    <input
+      type="text"
+      id="blogTitle"
+      placeholder="Enter Blog Title">
+
+    <select id="blogCategory">
+
+      <option value="">Select Category</option>
+
+      <option>Motivation</option>
+
+      <option>Life</option>
+
+      <option>Education</option>
+
+      <option>Technology</option>
+
+      <option>Business</option>
+
+      <option>Health</option>
+
+      <option>Entertainment</option>
+
+    </select>
+
+    <input
+      type="file"
+      id="coverImage"
+      accept="image/*">
+
+    <input
+      type="text"
+      id="blogTags"
+      placeholder="Tags (example: life,motivation,study)">
+
+    <textarea
+      id="blogContent"
+      placeholder="Write your story here..."
+      rows="12"></textarea>
+
+    <div class="editor-buttons">
+
+      <button id="saveDraft">
+        💾 Save Draft
+      </button>
+
+      <button id="publishBlog">
+        🚀 Publish
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 <script type="module" src="js/script.js"></script>
 </body>
 </html>
