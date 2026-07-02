@@ -3,7 +3,9 @@ import {
   db,
   collection,
   addDoc,
-  serverTimestamp
+  serverTimestamp,
+  doc,
+  getDoc
 } from "./firebase.js";
 
 const publishBtn = document.getElementById("publishBlog");
@@ -22,7 +24,9 @@ publishBtn.onclick = async () => {
   }
 
   const user = auth.currentUser;
+const userDoc = await getDoc(doc(db, "users", user.uid));
 
+const userData = userDoc.data();
   if (!user) {
     alert("Please login first.");
     return;
@@ -43,6 +47,8 @@ publishBtn.onclick = async () => {
 
       authorId: user.uid,
       authorEmail: user.email,
+      authorName: userData.name,
+authorUsername: userData.username,
 
       likes: 0,
       comments: 0,
