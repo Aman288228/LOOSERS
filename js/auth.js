@@ -1,8 +1,12 @@
 import {
   auth,
+  db,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  doc,
+  setDoc,
+  serverTimestamp
 } from "./firebase.js";
 
 let currentUser = null;
@@ -13,6 +17,14 @@ document.getElementById("signupBtn").onclick = async () => {
 
   try {
     await createUserWithEmailAndPassword(auth, email, password);
+    const user = auth.currentUser;
+
+await setDoc(doc(db, "users", user.uid), {
+  name: name,
+  username: username,
+  email: email,
+  createdAt: serverTimestamp()
+});
     document.getElementById("msg").innerText = "Signup Successful!";
     document.getElementById("authModal").style.display = "none";
   } catch (e) {
