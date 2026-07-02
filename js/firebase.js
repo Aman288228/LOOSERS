@@ -7,7 +7,7 @@ import {
   onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, increment, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, setDoc, updateDoc, increment, query, where, serverTimestamp  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD0apa8kCYrCn7C2XvJQ4VlY4kTNQKqnlM",
   authDomain: "sagarsocial-93251.firebaseapp.com",
@@ -31,8 +31,10 @@ export {
   addDoc,
   getDocs,
   doc,
+  setDoc,
   updateDoc,
   increment,
   query,
-  where
+  where,
+  serverTimestamp
 };
