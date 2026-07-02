@@ -69,14 +69,20 @@ document.getElementById("createAccount").onclick = async () => {
     await createUserWithEmailAndPassword(auth, email, password);
 
    
-  document.getElementById("signupForm").style.display = "none";
-document.getElementById("authModal").style.display = "flex";
+ signupForm.style.display = "none";
+loginForm.style.display = "block";
 
-document.getElementById("email").value = "";
+document.getElementById("newEmail").value = "";
+document.getElementById("newPassword").value = "";
+document.getElementById("name").value = "";
+document.getElementById("username").value = "";
+
+document.getElementById("email").value = email;
 document.getElementById("password").value = "";
 
+document.getElementById("msg").style.color = "green";
 document.getElementById("msg").innerText =
-  "Account Created Successfully! Now login.";
+  "✅ Account created successfully. Please enter your password to login.";
   } catch (e) {
     alert(e.message);
   }
