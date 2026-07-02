@@ -24,14 +24,19 @@ publishBtn.onclick = async () => {
   }
 
   const user = auth.currentUser;
-const userDoc = await getDoc(doc(db, "users", user.uid));
+const user = auth.currentUser;
 
+if (!user) {
+  alert("Please login first.");
+  return;
+}
+
+const userDoc = await getDoc(doc(db, "users", user.uid));
 const userData = userDoc.data();
-  console.log(userData);
-  if (!user) {
-    alert("Please login first.");
-    return;
-  }
+
+console.log("User Data:", userData);
+console.log("Name:", userData.name);
+console.log("Username:", userData.username);
 
   try {
 
@@ -48,8 +53,7 @@ const userData = userDoc.data();
 
       authorId: user.uid,
       authorEmail: user.email,
-      console.log("Name:", userData.name);
-console.log("Username:", userData.username);
+    
       authorName: userData.name,
 authorUsername: userData.username,
       
