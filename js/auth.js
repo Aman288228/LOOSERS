@@ -9,97 +9,212 @@ import {
   serverTimestamp
 } from "./firebase.js";
 
-let currentUser = null;
-let currentStep = 1;
+// ----------------------
+// DOM Elements
+// ----------------------
 
-    document.getElementById("msg").innerText = "Signup Successful!";
-    document.getElementById("authModal").style.display = "none";
-  } catch (e) {
-    document.getElementById("msg").innerText = e.message;
-  }
-};
+const authModal = document.getElementById("authModal");
 
-document.getElementById("loginBtn").onclick = async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    document.getElementById("msg").innerText = "Login Successful!";
-    document.getElementById("authModal").style.display = "none";
-  } catch (e) {
-    document.getElementById("msg").innerText = e.message;
-  }
-};
-document.getElementById("closeModal").onclick = () => {
-  document.getElementById("authModal").style.display = "none";
-};
-onAuthStateChanged(auth, (user) => {
-  const modal = document.getElementById("authModal");
-
-  if (user) {
-    currentUser = user;
-    console.log("Logged In:", user.email);
-
-    modal.style.display = "none";
-  } else {
-    currentUser = null;
-    console.log("No User Logged In");
-
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-  }
-});
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
-const backToLogin = document.getElementById("backToLogin");
 
-document.getElementById("switchText").onclick = () => {
-  loginForm.style.display = "none";
-  signupForm.style.display = "block";
-};
-document.getElementById("createAccount").onclick = async () => {
-  const name = document.getElementById("name").value;
-  const username = document.getElementById("username").value;
-  const email = document.getElementById("newEmail").value;
-  const password = document.getElementById("newPassword").value;
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+
+const loginBtn = document.getElementById("loginBtn");
+const signupBtn = document.getElementById("signupBtn");
+
+const switchText = document.getElementById("switchText");
+const backToLogin = document.getElementById("backToLogin");
+const closeModal = document.getElementById("closeModal");
+
+const msg = document.getElementById("msg");
+
+const name = document.getElementById("name");
+const username = document.getElementById("username");
+const newEmail = document.getElementById("newEmail");
+const newPassword = document.getElementById("newPassword");
+
+const createAccountBtn = document.getElementById("createAccount");
+
+// ----------------------
+// Current User
+// ----------------------
+
+let currentUser = null;
+
+// ----------------------
+// Login
+// ----------------------
+
+loginBtn.onclick = async () => {
+
+  msg.innerText = "";
 
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
-const user = auth.currentUser;
 
-await setDoc(doc(db, "users", user.uid), {
-  name,
-  username,
-  email,
-  createdAt: serverTimestamp()
-});
-   
- signupForm.style.display = "none";
-loginForm.style.display = "block";
+    await signInWithEmailAndPassword(
+      auth,
+      email.value,
+      password.value
+    );
 
-document.getElementById("newEmail").value = "";
-document.getElementById("newPassword").value = "";
-document.getElementById("name").value = "";
-document.getElementById("username").value = "";
+    msg.style.color = "green";
+    msg.innerText = "Login Successful";
 
-document.getElementById("email").value = email;
-document.getElementById("password").value = "";
+    authModal.style.display = "none";
 
-document.getElementById("msg").style.color = "green";
-document.getElementById("msg").innerText =
-  "✅ Account created successfully. Please enter your password to login.";
   } catch (e) {
-    alert(e.message);
-  }
-};
-document.getElementById("authTitle").onclick = () => {
-  document.getElementById("signupForm").style.display = "none";
 
-  document.getElementById("loginBtn").style.display = "block";
-  document.getElementById("signupBtn").style.display = "block";
+    msg.style.color = "red";
+    msg.innerText = e.message;
+
+  }
+
 };
+
+// ----------------------
+// Auth State
+// ----------------------
+
+onAuthStateChanged(auth, (user) => {
+
+  currentUser = user;
+
+  if (user) {
+
+    console.log("Logged In:", user.email);
+
+    authModal.style.display = "none";
+
+  } else {
+
+    console.log("No User Logged In");
+
+  }
+
+});
+// ----------------------
+// Login ↔ Signup Switch
+// ----------------------
+
+switchText.onclick = () => {
+
+  msg.innerText = "";
+
+  loginForm.style.display = "none";
+  signupForm.style.display = "block";
+
+};
+
 backToLogin.onclick = () => {
+
   signupForm.style.display = "none";
   loginForm.style.display = "block";
+
 };
+
+// ----------------------
+// Create Account
+// ----------------------
+
+createAccountBtn.onclick = async () => {
+
+  msg.innerText = "";
+
+  const fullName = name.value.trim();
+  const userName = username.value.trim();
+  const userEmail = newEmail.value.trim();
+  const userPassword = newPassword.value;
+
+  if (
+    !fullName ||
+    !userName ||
+    !userEmail ||
+    !userPassword
+  ) {
+
+    alert("Please fill all fields.");
+    return;
+
+  }
+
+  try {
+
+    const userCredential =
+      await createUserWithEmailAndPassword(
+        auth,
+        userEmail,
+        userPassword
+      );
+
+    const user = userCredential.user;
+
+    await setDoc(doc(db, "users", user.uid), {
+
+      name: fullName,
+      username: userName,
+      email: userEmail,
+      createdAt: serverTimestamp()
+
+    });
+
+    signupForm.style.display = "none";
+    loginForm.style.display = "block";
+
+    email.value = userEmail;
+    password.value = "";
+
+    name.value = "";
+    username.value = "";
+    newEmail.value = "";
+    newPassword.value = "";
+
+    msg.style.color = "green";
+    msg.innerText =
+      "Account created successfully. Please login.";
+
+  } catch (e) {
+
+    msg.style.color = "red";
+    msg.innerText = e.message;
+
+  }
+
+};
+// ----------------------
+// Close Modal
+// ----------------------
+
+closeModal.onclick = () => {
+
+  authModal.style.display = "none";
+
+};
+
+// ----------------------
+// Reset Forms
+// ----------------------
+
+function resetSignupForm() {
+
+  name.value = "";
+  username.value = "";
+  newEmail.value = "";
+  newPassword.value = "";
+
+}
+
+function showLoginForm() {
+
+  signupForm.style.display = "none";
+  loginForm.style.display = "block";
+
+}
+
+function showSignupForm() {
+
+  loginForm.style.display = "none";
+  signupForm.style.display = "block";
+
+}
