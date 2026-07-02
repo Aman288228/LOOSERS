@@ -279,3 +279,25 @@ position: relative;
 
     color:white;
 }
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:35px;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:white;
+    color:black;
+    font-size:28px;
+    font-weight:bold;
+    cursor:pointer;
+    z-index:9999;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+.close-btn:hover{
+    background:#f5f5f5;
+}
