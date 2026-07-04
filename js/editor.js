@@ -13,6 +13,10 @@ const editorModal = document.getElementById("editorModal");
 
 publishBtn.onclick = async () => {
 
+  // ==========================
+  // Get Blog Data
+  // ==========================
+
   const title = document.getElementById("blogTitle").value.trim();
   const category = document.getElementById("blogCategory").value;
   const tags = document.getElementById("blogTags").value.trim();
@@ -23,22 +27,37 @@ publishBtn.onclick = async () => {
     return;
   }
 
+  // ==========================
+  // Check Login
+  // ==========================
+
   const user = auth.currentUser;
 
-
-if (!user) {
-  alert("Please login first.");
-  return;
-}
-
-const userDoc = await getDoc(doc(db, "users", user.uid));
-const userData = userDoc.data();
-
-console.log("User Data:", userData);
-console.log("Name:", userData.name);
-console.log("Username:", userData.username);
+  if (!user) {
+    alert("Please login first.");
+    return;
+  }
 
   try {
+
+    // ==========================
+    // Get User Data
+    // ==========================
+
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+
+    if (!userDoc.exists()) {
+      alert("User profile not found.");
+      return;
+    }
+
+    const userData = userDoc.data();
+
+    console.log("User Data:", userData);
+
+    // ==========================
+    // Save Blog
+    // ==========================
 
     await addDoc(collection(db, "posts"), {
 
@@ -53,10 +72,9 @@ console.log("Username:", userData.username);
 
       authorId: user.uid,
       authorEmail: user.email,
-    
+
       authorName: userData.name,
-authorUsername: userData.username,
-      
+      authorUsername: userData.username,
 
       likes: 0,
       comments: 0,
@@ -65,6 +83,10 @@ authorUsername: userData.username,
       createdAt: serverTimestamp()
 
     });
+
+    // ==========================
+    // Success
+    // ==========================
 
     alert("🎉 Blog Published Successfully!");
 
@@ -76,6 +98,8 @@ authorUsername: userData.username,
     editorModal.style.display = "none";
 
   } catch (e) {
+
+    console.error(e);
 
     alert(e.message);
 
