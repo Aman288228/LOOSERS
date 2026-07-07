@@ -17,18 +17,39 @@ for (const doc of querySnapshot.docs) {
   const postId = doc.id;
   const post = doc.data();
 
-  postsDiv.innerHTML += `
-    <div style="border:1px solid #ccc;padding:10px;margin:10px;">
-      <h3>${post.title}</h3>
-      <p>${post.content}</p>
+postsDiv.innerHTML += `
+<div class="post-card">
 
-      <button onclick="likePost('${postId}')">❤️ ${post.likes || 0}</button>
-      <input type="text" id="comment-${postId}" placeholder="Write a comment">
-      <button onclick="addComment('${postId}')">💬 Comment</button>
+<div class="post-header">
+<h3>${post.title}</h3>
+<span>Just now</span>
+</div>
 
-      <div></div>
-    </div>
-  `;
+<p class="post-content">
+${post.content}
+</p>
+
+<div class="post-actions">
+
+<button onclick="likePost('${postId}')">
+❤️ ${post.likes || 0}
+</button>
+
+<input
+id="comment-${postId}"
+type="text"
+placeholder="Write a comment">
+
+<button onclick="addComment('${postId}')">
+💬 Comment
+</button>
+
+</div>
+
+<div id="comments-${postId}"></div>
+
+</div>
+`;
  }
 }
 window.likePost = async function(postId) {
