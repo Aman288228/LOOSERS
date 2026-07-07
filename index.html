@@ -61,12 +61,49 @@ placeholder="🔍 Search blogs, people...">
 
 <div class="top-right">
 
+<button class="icon-btn" id="themeBtn">
+🌙
+</button>
+
+<button class="icon-btn" id="notificationBtn">
+🔔
+</button>
+
 <button id="loginTopBtn" class="write-btn">
 Login
 </button>
 
-<div id="userBox" class="profile" style="display:none;">
-👤 <span id="userName">Guest</span>
+<div id="profileArea" style="display:none; position:relative;">
+
+<div id="userBox" class="profile">
+
+<img
+id="profilePhoto"
+src="https://ui-avatars.com/api/?name=User&background=5d8b5b&color=fff"
+class="profile-img">
+
+<div class="profile-info">
+
+<span id="userName">User</span>
+
+<small>@member</small>
+
+</div>
+
+<span class="arrow">
+▼
+</span>
+
+</div>
+
+<div id="profileDropdown" class="profile-dropdown">
+
+<button id="logoutBtn">
+🚪 Logout
+</button>
+
+</div>
+
 </div>
 
 </div>
