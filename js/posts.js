@@ -21,10 +21,18 @@ postsDiv.innerHTML += `
 <div class="post-card">
 
 <div class="post-header">
-<h3>${post.title}</h3>
-<span>Just now</span>
+
+<div>
+
+<strong>👤 Guest User</strong><br>
+
+<small>Just now</small>
+
 </div>
 
+</div>
+
+<h2>${post.title}</h2>
 <p class="post-content">
 ${post.content}
 </p>
