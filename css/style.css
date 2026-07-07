@@ -25,10 +25,8 @@ margin-top: 25px;
 
 .feed{
     flex:1;
-    padding:30px;
+    padding:25px;
     background:#fafaf7;
-    max-width:900px;
-    margin:auto;
 }
 
 .rightbar{
