@@ -88,6 +88,9 @@ onAuthStateChanged(auth, (user) => {
   currentUser = user;
 
   authModal.style.display = "none";
+   document.getElementById("loginTopBtn").style.display = "none";
+document.getElementById("userBox").style.display = "flex";
+document.getElementById("userName").innerText = user.email.split("@")[0];
 
   document.getElementById("profileMenu").style.display = "block";
 
@@ -98,6 +101,8 @@ onAuthStateChanged(auth, (user) => {
   currentUser = null;
 
   document.getElementById("profileMenu").style.display = "none";
+   document.getElementById("loginTopBtn").style.display = "inline-block";
+document.getElementById("userBox").style.display = "none";
 
 }
 
