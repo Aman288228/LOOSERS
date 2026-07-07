@@ -13,7 +13,7 @@ body{
 .sidebar{
     width:260px;
     background:#fff;
-    border-right:1px solid #e5e5e5;
+    border-right:1px solid #e6e6e6;
     padding:25px;
     position:sticky;
     top:0;
@@ -35,6 +35,9 @@ body{
 }
 .menu{
   margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
 }
 
 .menu-item{
@@ -398,4 +401,24 @@ color:#35633b;
 
 font-weight:bold;
 
+}
+.logo{
+    margin:0;
+    font-size:28px;
+    color:#35633b;
+    font-weight:bold;
+}
+
+.tagline{
+    margin-top:8px;
+    color:#777;
+    font-size:14px;
+}
+
+#navbar{
+    background:transparent;
+    box-shadow:none;
+    text-align:left;
+    padding:0;
+    margin-bottom:30px;
 }
