@@ -20,6 +20,33 @@ if (auth.currentUser) {
   }
 
 };
+document.getElementById("openEditorHero").onclick = () => {
+
+  if (auth.currentUser) {
+
+    document.getElementById("editorModal").style.display = "flex";
+
+  } else {
+
+    authModal.style.display = "flex";
+
+  }
+
+};
+
+document.getElementById("openEditorHero2").onclick = () => {
+
+  if (auth.currentUser) {
+
+    document.getElementById("editorModal").style.display = "flex";
+
+  } else {
+
+    authModal.style.display = "flex";
+
+  }
+
+};
 document.getElementById("closeEditor").onclick = () => {
 
     document.getElementById("editorModal").style.display = "none";
