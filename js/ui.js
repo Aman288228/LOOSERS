@@ -10,7 +10,9 @@ writeBlogBtn.onclick = () => {
 if (auth.currentUser) {
 
     document.getElementById("editorModal").style.display = "flex";
-
+document.getElementById("loginTopBtn").onclick = () => {
+    document.getElementById("authModal").style.display = "flex";
+};
 
   } else {
 
