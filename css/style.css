@@ -15,9 +15,11 @@ body{
     background:#fff;
     border-right:1px solid #e6e6e6;
     padding:25px;
-    position:sticky;
-    top:0;
-    height:100vh;
+   position: sticky;
+top: 25px;
+height: calc(100vh - 25px);
+border-radius: 20px;
+margin-top: 25px;
     overflow:auto;
 }
 
