@@ -81,17 +81,25 @@ onAuthStateChanged(auth, (user) => {
 
   currentUser = user;
 
-  if (user) {
+ if (user) {
 
-    console.log("Logged In:", user.email);
+  console.log("Logged In:", user.email);
 
-    authModal.style.display = "none";
+  currentUser = user;
 
-  } else {
+  authModal.style.display = "none";
 
-    console.log("No User Logged In");
+  document.getElementById("profileMenu").style.display = "block";
 
-  }
+} else {
+
+  console.log("No User Logged In");
+
+  currentUser = null;
+
+  document.getElementById("profileMenu").style.display = "none";
+
+}
 
 });
 // ----------------------
