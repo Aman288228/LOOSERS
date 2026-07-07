@@ -6,7 +6,8 @@ import {
   onAuthStateChanged,
   doc,
   setDoc,
-  serverTimestamp
+  serverTimestamp,
+  signOut
 } from "./firebase.js";
 
 // ----------------------
@@ -89,7 +90,7 @@ onAuthStateChanged(auth, (user) => {
 
   authModal.style.display = "none";
    document.getElementById("loginTopBtn").style.display = "none";
-document.getElementById("userBox").style.display = "flex";
+document.getElementById("profileArea").style.display="block";
 document.getElementById("userName").innerText = user.email.split("@")[0];
 
   document.getElementById("profileMenu").style.display = "block";
@@ -102,7 +103,7 @@ document.getElementById("userName").innerText = user.email.split("@")[0];
 
   document.getElementById("profileMenu").style.display = "none";
    document.getElementById("loginTopBtn").style.display = "inline-block";
-document.getElementById("userBox").style.display = "none";
+document.getElementById("profileArea").style.display="none";
 
 }
 
@@ -231,3 +232,39 @@ function showSignupForm() {
   signupForm.style.display = "block";
 
 }
+// ===== Profile Dropdown =====
+
+const profileArea = document.getElementById("profileArea");
+const userBox = document.getElementById("userBox");
+const profileDropdown = document.getElementById("profileDropdown");
+const logoutBtn = document.getElementById("logoutBtn");
+
+userBox.onclick = () => {
+
+    if(profileDropdown.style.display==="block"){
+
+        profileDropdown.style.display="none";
+
+    }else{
+
+        profileDropdown.style.display="block";
+
+    }
+
+};
+
+document.onclick=(e)=>{
+
+    if(!profileArea.contains(e.target)){
+
+        profileDropdown.style.display="none";
+
+    }
+
+};
+
+logoutBtn.onclick=async()=>{
+
+    await signOut(auth);
+
+};
